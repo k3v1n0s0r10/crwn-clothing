@@ -1,13 +1,28 @@
-*{
+*,
+*::after,
+*::before {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-  font-family: 'Open Sans Condensed';
+html {
+  box-sizing: inherit;
+}
+
+body {
+  font-family: "Open Sans Condensed";
   padding: 20px 50px;
 }
 
-a{
+a,
+button {
+  outline: none;
   text-decoration: none;
-  color: #000;
+  color: inherit;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
 }

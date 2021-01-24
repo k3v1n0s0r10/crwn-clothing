@@ -1,10 +1,11 @@
 import React from "react";
 
+import { RouteComponentProps, withRouter } from "react-router-dom";
+import { SectionData } from "../../@types/props";
+
 import "./MenuItem.scss";
 
-import { withRouter } from "react-router-dom";
-
-const MenuItem: React.FC<any> = ({
+const MenuItem: React.FC<SectionData & RouteComponentProps> = ({
   title,
   imageUrl,
   size,

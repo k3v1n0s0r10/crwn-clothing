@@ -1,33 +1,26 @@
-import React, { useState } from "react";
+import React from "react";
 import CustomButton from "../custom-button/CustomButton";
 import FormInput from "../form-input/FormInput";
 
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import {
+  createUserProfileDocument,
+  signInWithGoogle,
+} from "../../firebase/firebase.utils";
 
 import "./SignIn.scss";
+import useForm from "../../hooks/useForm";
 
 const SignIn: React.FC = () => {
-  const [signInData, setSignInData] = useState({
+  const [signInData, handleChange, clearForm] = useForm({
     email: "",
     password: "",
   });
 
-  const handleSubmit = (event: any) => {
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
+    await createUserProfileDocument(signInData);
 
-    setSignInData({
-      email: "",
-      password: "",
-    });
-  };
-
-  const handleChange = (event: any) => {
-    const { value, name } = event.target;
-
-    setSignInData((oldInfo) => ({
-      ...oldInfo,
-      [name]: value,
-    }));
+    clearForm();
   };
 
   return (
@@ -36,7 +29,7 @@ const SignIn: React.FC = () => {
 
       <span>Sign in with your email and password</span>
 
-      <form onSubmit={handleSubmit}>
+      <form autoComplete="false" onSubmit={handleSubmit}>
         <FormInput
           type="email"
           name="email"

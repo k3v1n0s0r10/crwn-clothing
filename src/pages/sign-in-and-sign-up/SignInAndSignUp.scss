@@ -1,0 +1,13 @@
+.sign-in-and-sign-up {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+@media screen and (min-width: 800px) {
+  .sign-in-and-sign-up {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+}
